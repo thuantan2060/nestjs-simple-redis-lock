@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { RedisService } from 'nestjs-redis';
+import { RedisService } from '@liaoliaots/nestjs-redis';
 import * as debugFactory from 'debug';
 import { REDIS_LOCK_OPTIONS } from './redisLock.constants';
 import IORedis = require('ioredis');
