@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { RedisService } from '@liaoliaots/nestjs-redis';
+import { RedisManager } from '@liaoliaots/nestjs-redis';
 import * as debugFactory from 'debug';
 import { REDIS_LOCK_OPTIONS } from './redisLock.constants';
 import IORedis = require('ioredis');
@@ -13,7 +13,7 @@ export class RedisLockService {
   public readonly uuid: string = RedisLockService.generateUuid();
 
   constructor(
-    protected readonly redis: RedisService,
+    protected readonly redis: RedisManager,
     @Inject(REDIS_LOCK_OPTIONS) protected readonly config: RedisLockOptions,
   ) {
     debug(`RedisLock: uuid: ${this.uuid}`);
