@@ -26,7 +26,12 @@ import { RedisLockModule } from '@huangang/nestjs-simple-redis-lock';
       }),
       inject: [ConfigService],
     }),
-    RedisLockModule.register({}), // import RedisLockModule, use default configuration
+   RedisLockModule.registerAsync({
+      useFactory: async (redisManager: RedisManager) => {
+        return { prefix: ':lock:', client: redisManager.getClient() }
+      },
+      inject: [RedisManager]
+    }), // import RedisLockModule, use default configuration
   ]
 })
 export class AppModule {}
