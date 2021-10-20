@@ -1,5 +1,4 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { RedisManager } from '@liaoliaots/nestjs-redis';
 import * as debugFactory from 'debug';
 import { REDIS_LOCK_OPTIONS } from './redisLock.constants';
 import IORedis = require('ioredis');
@@ -13,13 +12,12 @@ export class RedisLockService {
   public readonly uuid: string = RedisLockService.generateUuid();
 
   constructor(
-    protected readonly redis: RedisManager,
     @Inject(REDIS_LOCK_OPTIONS) protected readonly config: RedisLockOptions,
   ) {
     debug(`RedisLock: uuid: ${this.uuid}`);
   }
 
-  private prefix(name): string {
+  private prefix(name: string): string {
     if (this.config.prefix) {
       return this.config.prefix + name;
     }
@@ -27,10 +25,7 @@ export class RedisLockService {
   }
 
   private getClient(): IORedis.Redis {
-    if (this.config.clientName) {
-      return this.redis.getClient(this.config.clientName);
-    }
-    return this.redis.getClient();
+    return this.config.client
   }
 
   /**

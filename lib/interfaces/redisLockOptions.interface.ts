@@ -1,8 +1,9 @@
 import { ModuleMetadata, Type } from '@nestjs/common/interfaces';
+import { Redis } from 'ioredis';
 
 export interface RedisLockOptions {
-  clientName?: string;
   prefix?: string;
+  client?: Redis;
 }
 
 export interface RedisLockOptionsFactory {
@@ -15,5 +16,3 @@ export interface RedisLockAsyncOptions extends Pick<ModuleMetadata, 'imports'> {
   useFactory?: (...args: any[]) => Promise<RedisLockOptions> | RedisLockOptions;
   inject?: any[];
 }
-
-let s: RedisLockOptions = { prefix: '12'};
