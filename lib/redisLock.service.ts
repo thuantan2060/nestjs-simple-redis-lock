@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import * as debugFactory from 'debug';
 import { REDIS_LOCK_OPTIONS } from './redisLock.constants';
-import IORedis = require('ioredis');
+import Redis from 'ioredis';
 import { RedisLockOptions } from './interfaces/redisLockOptions.interface';
 
 const debug = debugFactory('nestjs-simple-redis-lock');
@@ -24,7 +24,7 @@ export class RedisLockService {
     return `lock:${name}`;
   }
 
-  private getClient(): IORedis.Redis {
+  private getClient(): Redis {
     return this.config.client
   }
 
