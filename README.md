@@ -7,10 +7,11 @@ npm install @huangang/nestjs-simple-redis-lock
 ```
 
 ## Usage
-You must install [nestjs-redis](https://github.com/liaoliaots/nestjs-redis), and use in Nest. This package use it to access redis:
+You must install [@liaoliaots/nestjs-redis](https://github.com/liaoliaots/nestjs-redis), and use in Nest. This package use it to access redis:
 ```JavaScript
 // app.ts
 import { RedisLockModule } from '@huangang/nestjs-simple-redis-lock';
+import { RedisModule, RedisManager } from '@liaoliaots/nestjs-redis';
 
 @Module({
   imports: [
