@@ -7,9 +7,13 @@
     "node": ">=20"
   },
   "files": [
-    "dist/"
+    "dist",
+    "index.js",
+    "index.d.ts"
   ],
+  "exports": "./index.js",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 0"
