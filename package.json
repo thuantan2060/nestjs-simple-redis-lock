@@ -22,10 +22,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/thuantan2060/nestjs-simple-redis-lock.git"
+    "url": "git+https://github.com/thuantan2060/nestjs-simple-redis-lock.git"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/"
   },
   "author": "github.com/thuantan2060",
   "license": "MIT",
