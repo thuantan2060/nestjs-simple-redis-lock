@@ -25,7 +25,7 @@ jobs:
           cache: 'npm'
           always-auth: 'true'
       - run: npm ci
-      - run: npm build
+      - run: npm run build
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
